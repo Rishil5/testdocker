@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  nginx:
+    build: image/
+    ports:
+      - "8080:80"
+    volumes:
+      - ./static_web/:/www-data/
+    links:
+        - php
+  php:
+    image: php:7-fpm
+    volumes:
+      - ./static_web/:/www-data/
+    restart: always
+  
